@@ -1,12 +1,12 @@
 <template>
   <div class="wrapper">
     <div class="cart">
-      <button
+      <Button
           class="cart__btn-open"
           @click="changeIsCartOpen(true)"
       >
         Open cart ({{ cartTotalNumber }})
-      </button>
+      </Button>
       <Cart
           v-if="isCartOpen"
           :key="cart.id"
@@ -33,10 +33,12 @@ import Product from './components/Product.vue';
 import {onMounted, shallowRef} from "@vue/runtime-core";
 import axios from 'axios';
 import {computed, ref} from "@vue/reactivity";
+import Button from "./components/Button.vue";
 
 export default {
   name: "App",
   components: {
+    Button,
     Cart,
     Product,
   },
@@ -61,9 +63,7 @@ export default {
     };
 
     const cartTotalNumber = computed(() => {
-      return Object.values(cart.value).reduce((sum, cartItem) => {
-        return sum + Object.keys(cart.value).length + cartItem.count;
-      }, 0)
+      return Object.keys(cart.value).length;
     });
 
     const changeIsCartOpen = (newValue) => {
@@ -108,14 +108,9 @@ export default {
     display: flex;
 
     &__btn-open {
-      background-color: white;
-      color: black;
-      border: 2px solid black;
-      border-radius: 4px;
       width: 115px;
-      height: 30px;
-      font-weight: bold;
       position: relative;
+      border: 2px solid black;
     }
   }
 

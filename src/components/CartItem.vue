@@ -23,20 +23,22 @@
         </span>
       </div>
     </div>
-    <button
+    <Button
         class="cart-item__btn-delete"
         @click="emitDeleteItemFromCart"
     >
       DELETE
-    </button>
+    </Button>
   </div>
 </template>
 
 <script>
 import {toRefs, watch} from 'vue';
+import Button from "./Button.vue";
 
 export default {
   name: "CartItem",
+  components: {Button},
   props: {
     item: {
       type: Object,
@@ -109,14 +111,8 @@ export default {
   }
 
   &__btn-delete {
-    background-color: white;
-    color: black;
-    border: 2px solid #e0e0e0;
-    border-radius: 4px;
     width: 100px;
-    height: 30px;
-    font-weight: bold;
-    box-shadow: 0 0 4px 0 #e0e0e0;
+
     &:hover {
       box-shadow: 0 0 4px 0 teal;
     }

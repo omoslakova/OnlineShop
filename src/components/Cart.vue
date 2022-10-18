@@ -19,12 +19,12 @@
       <p class="info__total-positions">
         Positions: {{ cartTotalPositions }}
       </p>
-      <button
+      <Button
           @click="emitCloseCart"
           class="info__btn-close"
       >
         CLOSE
-      </button>
+      </Button>
     </div>
   </dialog>
 </template>
@@ -32,10 +32,12 @@
 <script>
 import CartItem from './CartItem.vue';
 import {computed} from "@vue/reactivity";
+import Button from "./Button.vue";
 
 export default {
   name: "Cart",
   components: {
+    Button,
     CartItem,
   },
   props: {
@@ -104,14 +106,9 @@ export default {
     font-weight: bold;
 
     &__btn-close {
-      background-color: white;
-      color: black;
-      border: 2px solid black;
-      border-radius: 4px;
       width: 100px;
-      height: 30px;
-      font-weight: bold;
       place-self: center;
+      border: 2px solid black;
     }
   }
 }
